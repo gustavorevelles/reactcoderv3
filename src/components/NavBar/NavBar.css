@@ -1,0 +1,15 @@
+
+  .Option {
+    font-weight: normal;
+    color:#FFFFFF;
+    text-decoration: none;
+    margin-right: 15px;
+  }
+
+  .ActiveOption {
+    /* color: #8C30F5; */
+    font-weight: bold;
+    color:#FFFFFF;
+    text-decoration: none;
+    margin-right: 15px;
+  }
