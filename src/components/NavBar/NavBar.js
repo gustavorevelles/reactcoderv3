@@ -1,44 +1,35 @@
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget'
 import { NavLink } from 'react-router-dom'
-import { Navbar, NavbarBrand, Nav } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { Container } from "react-bootstrap";
+import { useEffect, useState } from 'react'
+import { getCategories } from '../../asyncmock'
+
 
 const NavBar = () => {
+
+  const [categories, setCategories] = useState([])
+  
+  useEffect(() => {
+    getCategories().then(categories => {
+      setCategories(categories)
+    })
+  }, [])
 
   return (
 
     <Navbar bg="primary" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand>Ecommerce</Navbar.Brand>
+        <Navbar.Brand>
+          <NavLink to={'/'} className="BrandNav">Xplora</NavLink>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavLink
-                  to={'/category/esquis'}
-                  className={({ isActive }) =>
-                    isActive ? 'ActiveOption' : 'Option'
-                  }
-                >
-                  Esquís
-            </NavLink>
-              <NavLink
-                to={'/category/botas'}
-                className={({ isActive }) =>
-                  isActive ? 'ActiveOption' : 'Option'
-                }
-              >
-                Botas
-              </NavLink>
-            
-            <NavLink
-                to={'/category/tablas'}
-                className={({ isActive }) =>
-                  isActive ? 'ActiveOption' : 'Option'
-                }
-              >
-                Tablas
-              </NavLink>
+          {categories.map(cat => <NavLink key={cat.id} to={`/category/${cat.id}`} className={({ isActive }) =>
+              isActive ? 'ActiveOption' : 'Option'
+            }>{cat.description}</NavLink>)}
             
           </Nav>
         </Navbar.Collapse>

@@ -1,7 +1,7 @@
 const products = [
     {
         id:1, 
-        name:'Esquís Faction 080',
+        name:'Esquis Faction 080',
         stock:3, 
         price:'300',
         category:'esquis',

@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import ItemList from '../ItemList/ItemList'
 import { getProducts } from '../../asyncmock'
+import { getCategories } from '../../asyncmock'
 import { Container } from 'react-bootstrap'
 import { Row } from 'react-bootstrap'
-
-
 
 
 const ItemListContainer = ()=> {
@@ -25,7 +24,7 @@ const ItemListContainer = ()=> {
     
     return (
         
-        <Container>
+        <Container onClick={() => console.log('hice click en itemListContainer')}>
             <Row>
             <ItemList products={products}/>
             </Row>
