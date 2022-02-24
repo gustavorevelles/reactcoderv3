@@ -25,6 +25,15 @@ const products = [
         category:'tablas',
         description: 'Lorem ipsum dolor consecuter',
         img:'https://www.grartwork.com/react/img-p-3.jpg'
+    },
+    {
+        id:4, 
+        name:'Botas SSPK',
+        stock:10, 
+        price:'230',
+        category:'botas',
+        description: 'Lorem ipsum dolor consecuter',
+        img:'https://www.grartwork.com/react/img-p-4.jpg'
     }
 ]
 
