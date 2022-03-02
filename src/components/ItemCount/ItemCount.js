@@ -29,7 +29,7 @@ const ItemCount = ({stock = 1, initial = 1, onAdd})=> {
             
             <Button variant="outline-secondary" onClick={()=>increment()}>+</Button>
             <Row>
-                <Button  onClick={()=>onAdd(quantity)} >Agregar</Button>
+                <Button onClick={()=>onAdd(quantity)} >Agregar</Button>
             </Row>
         </InputGroup>
         </Container>
