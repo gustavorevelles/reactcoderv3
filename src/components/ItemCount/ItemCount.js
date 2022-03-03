@@ -22,16 +22,16 @@ const ItemCount = ({stock = 1, initial = 1, onAdd})=> {
 
    return(
 
-    <Container>
+        <Container>
             <InputGroup>
-            <FormControl placeholder={quantity}/>
-            <Button variant="outline-secondary" onClick={()=>decrement()}>-</Button>
-            
-            <Button variant="outline-secondary" onClick={()=>increment()}>+</Button>
-            <Row>
-                <Button onClick={()=>onAdd(quantity)} >Agregar</Button>
-            </Row>
-        </InputGroup>
+                <FormControl placeholder={quantity}/>
+                <Button variant="outline-secondary" onClick={()=>decrement()}>-</Button>
+                
+                <Button variant="outline-secondary" onClick={()=>increment()}>+</Button>
+                <Row>
+                    <Button onClick={()=>onAdd(quantity)} >Agregar</Button>
+                </Row>
+            </InputGroup>
         </Container>
    )
 

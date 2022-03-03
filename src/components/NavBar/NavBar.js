@@ -1,20 +1,27 @@
 import './NavBar.css'
-import CartWidget from '../CartWidget/CartWidget'
-import { Link, NavLink } from 'react-router-dom'
 import { Navbar, Nav } from "react-bootstrap";
 import { Container } from "react-bootstrap";
-import { useEffect, useState } from 'react'
-import { getCategories } from '../../asyncmock'
+import { useEffect, useState, useContext} from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { getDocs, collection } from 'firebase/firestore'
+import { firestoreDb } from '../../services/firebase/firebase'
+import CartWidget from '../CartWidget/CartWidget'
+import CartContext from '../../context/CartContext'
+
 
 
 const NavBar = () => {
-
   const [categories, setCategories] = useState([])
-  
+
+  const { products } = useContext(CartContext)
+
   useEffect(() => {
-    getCategories().then(categories => {
-      setCategories(categories)
-    })
+      getDocs(collection(firestoreDb, 'categories')).then(response => {
+        const categories = response.docs.map(cat => {
+          return { id: cat.id, ...cat.data()}
+        })
+        setCategories(categories)
+      })
   }, [])
 
   return (
@@ -30,10 +37,10 @@ const NavBar = () => {
           {categories.map(cat => <NavLink key={cat.id} to={`/category/${cat.id}`} className={({ isActive }) =>
               isActive ? 'ActiveOption' : 'Option'
             }>{cat.description}</NavLink>)}
-            
+            {products.length > 0 && <CartWidget />}
           </Nav>
         </Navbar.Collapse>
-        <CartWidget />
+        
       </Container>
 </Navbar>
 
